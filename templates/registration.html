@@ -1,0 +1,69 @@
+{% extends 'components/layout.html' %}
+
+{% block links %}
+<link rel="stylesheet" href="../static/css/registration.css">
+<script src="../static/js/registrationForm.js" defer></script>
+{% endblock links %}
+
+{% block body %}
+<div class="registration-container">
+    <div class='registration-form-container'>
+        <form action="" class="reg-form" autocomplete='off' spellcheck='false' method='POST'>
+            <!-- *name input field  -->
+            <label for="name" class="label registration-label name-label">Name</label>
+            <input type="text" class="input registration-input name" name="name">
+            <error></error>
+
+            <label for="userType" class="label registration-label user-type-label">user type</label>
+            <div class='user-type-container' id='userTypeContainer'>
+                <button type='button' class='btn' selected='true'>user</button>
+                <button type='button' class='btn' selected='false'>data entry</button>
+            </div>
+
+            <label for="gender" class="label registration-label gender-label">gender</label>
+            <div class='gender-container' id='genderContainer'>
+                <button type='button' class='btn' selected='true'>male</button>
+                <button type='button' class='btn' selected='false'>female</button>
+                <button type='button' class='btn' selected='false'>others</button>
+            </div>
+            <!-- *address input field  -->
+            <label for="" class="label registration-label address-label">Address</label>
+            <textarea class="input registration-input address" name="address" rows='3'></textarea>
+            <error></error>
+            <!-- *phone input field  -->
+            <label for="phone" class="label registration-label phone-label">Phone</label>
+            <input type="text" class="input registration-input phone" name="phone">
+            <error></error>
+            <!-- *email input field  -->
+            <label for="email" class="label registration-label email-label">email</label>
+            <input type="text" class="input registration-input email" name="email">
+            <error></error>
+            
+            <span class='realme-label'>username</span>
+            <input type="text" class="input registration-input username" name="username">
+            <error></error>
+            <!-- *password input field  -->
+            <label for="name" class="label registration-label password-label">Password</label>
+            <input type="password" class="input registration-input password" name="password">
+            <error></error>
+            <!-- *confirm password input field  -->
+            <label for="" class="label registration-label confirm-password-label">Confirm password</label>
+            <input type="password" class="input registration-input confirm-password" name="confirm-password">
+            <error></error>
+            <!-- -submit button  -->
+            <button type="button" class="btn reg-submit" value="create">create</button>
+            <div class='password-notifier'>
+                Note : Password must at least contain 6 characters and it should contain at least one uppercase, one lowercase, one special character and one digit.
+            </div>
+        </form>
+    </div>
+    <div class='animation-container'>
+       <div class='animation-theme' animation='darkGreen'>
+            {% include 'animation/darkGreen/registration.html' %}
+       </div>
+       <div class='animation-theme' animation='yellow'>
+            {% include 'animation/yellow/registration.html' %}
+       </div>
+    </div>
+</div>
+{% endblock body %}

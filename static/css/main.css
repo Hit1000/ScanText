@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('nav.css');
+@import url('lib.css');
+@import url('scrollbar.css');
+@import url('footer.css');
+@import url('components.css');
+@import url('popup-notification.css');
+@import url('loading-screen.css');
+@import url('responsiveNavigation.css');
+@import url('responsive.css');
+html{
+    margin: 0;
+    padding: 0;
+}
+*{
+    transition: background-color 400ms ease-in-out;
+}
+*:has(body[theme='yellow']){
+    --color: #f7ef0a;
+    --color-: #b4ae05;
+    --onColor: rgb(21, 21, 21);
+    /* --color: #865DFF; */
+    --secondary: #5a5a5a;
+    --secondary-: #484848;
+    --bg: #333439;
+    --text-color: white;
+    --text-secondary-color: #d1d0c5;
+
+    --bg-shadow: #222427;
+    --bg--2: #585b60;
+    --bg--1: #3c3e42;
+    --bg-card: #27282b;
+    --bg-card-2: rgba(83, 84, 89, 0.8);
+    --bg-card-3: rgb(83, 84, 89);
+    --bg-input: #3d3e43;
+    --gray-text: rgb(145, 145, 145);
+    --bg-2: #212124;
+    --shadow: rgb(47, 47, 47);
+
+    --footer-bg: #28292d;
+    --footer-text: #fff;
+    --footer-highlight-text: var(--color);
+    --text-highlighter: #202020;
+
+    --popup-bg: #161616;
+
+    --bw: rgb(255, 255, 255);
+}
+*:has(body[theme='darkGreen']){
+    --color: #658864;
+    --color-: #567255;
+    --onColor: white;
+    --secondary: #B7B78A;
+    --secondary-:rgb(147, 147, 104);
+    --secondary-half-opacity: rgba(183,183,138,0.5);
+    --color-dark: #4d694d; 
+    --bg: #DDDDDD;
+    --text-color: black;
+    --text-secondary-color: #d1d0c5;
+
+    --box-shadow: #222427;
+    --bg--2: #f6f6f6;
+    --bg--1: #f0f0f0;
+    --bg-card: #ffffff;
+    --bg-card-2: rgba(255, 255, 255, .5);
+    --bg-card-3: rgb(255, 255, 255);
+    --shadow: rgb(197, 197, 197);
+    
+    --bg-input: #e5e5e5;
+    --gray-text: rgb(145, 145, 145);
+    --bg-2: #212124;
+    
+    --footer-bg: var(--color);
+    --footer-text: #ffffff;
+    --footer-highlight-text: var(--secondary);
+    --text-highlighter: #171717;
+
+    --popup-bg: #1e1f1f;
+
+    --bw: rgb(0, 0, 0);
+}
+body{
+    color: var(--text-color);
+    background-color: var(--bg);
+}
+*{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    --size: 1rem;
+}
+input[type='submit']{
+    cursor: pointer;
+}
+.main-body{
+    min-height: 80vh;
+    max-height: fit-content;
+    padding-inline: 5vw;
+    padding-block-start: 1.2rem;
+    padding-block-end: 1rem;
+}

@@ -1,0 +1,114 @@
+{% extends 'components/layout.html' %} 
+{% block links %}
+<link rel="stylesheet" href="../static/css/message.css" />
+<script src='../static/js/jquery.js'></script>
+<script src='../static/js/message.js' defer></script>
+{% endblock links %} {% block body %}
+<div class='message-main-container'>
+    <div class='user-list-container'>
+        <div class='user-search-container'>
+            <input class='user-search' placeholder='search...' />
+        </div>
+        {% for individualData in userData  %}
+        <div class='user-data-container' selected='false' id={{individualData['user_id']}}>
+            <div class='user-image-container'>
+                <img src='./static/uploads/{{individualData['profile_pic']}}'>
+            </div>
+            <div class='user-name-container'>
+                <div class='user-name'>{{individualData['name']}}</div>
+                <div class='user-username'>{{individualData['username']}}</div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <div class='user-chat-container'>
+        <div class='select-chat-text-shower'>Select a user to see the chat</div>
+        {% for individualData in userData %}
+    <div class='user-chat-container-inside' show='false' id='{{individualData['user_id']}}'>
+        <div class='user-chat-list'>
+            {% set dates = [] %}
+            {% for chat in chats %}
+                {% if chat['sender_id'] == session.get('user') and chat['receiver_id'] == individualData['user_id'] or chat['receiver_id'] == session.get('user') and chat['sender_id'] == individualData['user_id'] %}
+                    {% set date = chat['time'].date() %}
+                    {% if date not in dates %}
+                        {% set _ = dates.append(date) %}
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+            {% for date in dates %}
+                <div class='date-shower'>
+                    {% if today == date.strftime("%d-%m-%Y") %}
+                        <div>today</div>
+                    {% else %}
+                        <div>{{ date.strftime("%d-%m-%Y") }}</div>
+                    {% endif %}
+                </div>
+                {% for chat in chats %}
+                    {% if chat['sender_id'] == session.get('user') and chat['receiver_id'] == individualData['user_id'] or chat['receiver_id'] == session.get('user') and chat['sender_id'] == individualData['user_id'] %}
+                        {% if chat['time'].date() == date %}
+                            <div class='alignment-setter'>
+                                {% if chat['sender_id'] == session.get('user') %}
+                                {% if chat['file_type'] %}
+                                <div class='user-chat-right'>
+                                    <div class='user-chat-file-name-container'>
+                                        <div class='user-chat-file-name'>{{
+                                            (chat['file_name'] or 'unknown') + chat['file_type']
+                                        }}</div>
+                                        <a class='user-chat-file-download-btn' data-fileContent='{{ chat['text'] }}' data-fileName='{{ (chat['file_name'] or 'unknown') }}' data-fileFormat='{{ chat['file_type'] }}'>download</a>
+                                    </div>
+                                    <div></div>
+                                    <div class='user-chat-time'>
+                                        {{ chat['time'].time().strftime('%I:%M %p') }}
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class='user-chat-right'>
+                                    <div class='user-chat-text-content'>
+                                        {{ chat['text'] }}
+                                    </div>
+                                    <div class='user-chat-time'>
+                                        {{ chat['time'].time().strftime('%I:%M %p') }}
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% else %}
+                                {% if chat['file_type'] %}
+                                <div class='user-chat-left'>
+                                    <div class='user-chat-file-name-container'>
+                                        <div class='user-chat-file-name'>{{
+                                            (chat['file_name'] or 'unknown') + chat['file_type']
+                                        }}</div>
+                                        <a class='user-chat-file-download-btn' data-fileContent='{{ chat['text'] }}' data-fileName='{{ (chat['file_name'] or 'unknown') }}' data-fileFormat='{{ chat['file_type'] }}'>download</a>
+                                    </div>
+                                    <div></div>
+                                    <div class='user-chat-time'>
+                                        {{ chat['time'].time().strftime('%I:%M %p') }}
+                                    </div>
+                                </div>
+                                {% else %}
+                                <div class='user-chat-left'>
+                                    <div class='user-chat-text-content'>
+                                        {{ chat['text'] }}
+                                    </div>
+                                    <div class='user-chat-time'>
+                                        {{ chat['time'].time().strftime('%I:%M %p') }}
+                                    </div>
+                                </div>
+                                {% endif %}
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </div>
+        <div class='message-input-container'>
+            <input class='message-input' placeholder='Enter a message...' id='{{individualData['user_id']}}' />
+            <button class='message-send-btn'></button>
+        </div>
+    </div>
+{% endfor %}
+
+    </div>
+</div>
+{% endblock body %}

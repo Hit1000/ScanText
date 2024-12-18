@@ -1,0 +1,54 @@
+button{
+    border: none;
+    outline: none;
+    font-size: 1rem;
+}
+button:hover{
+    cursor: pointer;
+}
+.no-text-decoration{
+    text-decoration: none;
+}
+.width-full{
+    width: 100%;
+}
+.height-full{
+    height: 100%;
+}
+.size-full{
+    width: 100%;
+    height: 100%;
+}
+.label{
+    display: inline-block;
+}
+.input{
+    padding: .95rem 1.5rem;    
+    outline: none;
+    border: none;
+    color: var(--text-color);
+    border-radius: .5rem;
+    font-size: 0.95rem;
+}
+.btn{
+    border: none;
+    outline: none;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    cursor: pointer;
+    background-color: var(--color);
+    font-size: .9rem;
+}
+.input-container{
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+error{
+    width: 100%;
+    display: block;
+    font-size: .7rem;
+    color: red;
+    transform: translateY(-.6rem);
+    margin-inline: .25rem;
+}

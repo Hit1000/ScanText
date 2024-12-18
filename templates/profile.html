@@ -1,0 +1,196 @@
+{% extends 'components/layout.html' %} {% block links %}
+<link rel="stylesheet" href="../static/css/profile.css" />
+<script src='static/js/jquery.js'></script>
+<script src='static/js/popup-notification.js'></script>
+<script src='static/js/profile.js' defer></script>
+{% endblock links %} {% block body %}
+<div class='profile-container-main'>
+    <div class='profile-container'>
+        <div class='first-container'>
+            <span class='profile-pic-container'>
+                <img class='profile-pic' src='static/uploads/{{userData[0].profile_pic}}' />
+            </span>
+            <div>
+                <div class='name-container'>{{userData[0].name}}</div>
+                 <div class='username-container'>
+                    <div class='username-content'>{{userData[0].username}}</div>
+                </div>
+            </div>
+        </div>
+        <div class='second-container'>
+            <div class='gender-container'>
+                <div class='gender-label'>Gender</div>
+                <div class='gender-content'>{{userData[0].gender}}</div>
+            </div>
+            <div class='email-container'>
+                <div class='email-label'>Email</div>
+                <div class='email-content'>{{userData[0].email}}</div>
+            </div>
+            <div class='phone-container'>
+                <div class='phone-label'>Phone</div>
+                <div class='phone-content'>{{userData[0].phone}}</div>
+            </div>
+            <div class='address-container'>
+                <div class='address-label'>Address</div>
+                <div class='address-content'>{{ userData[0].address|replace(' ', '<br>')|safe }}</div>
+            </div>
+        </div>
+    </div>
+    <div class='quick-settings-container'>
+        <div class='history-btn-top'>History</div>
+        <div class='post-btn-top'>Post</div>
+        <div class='update-profile-btn-top'>Update profile</div>
+        <div class='update-password-btn-top'>Update password</div>
+        <div class='feedback-btn-top'>Feedback</div>
+    </div>
+</div>
+<div class='history-container-main'>
+    {% for item in history %}
+        <div class='content-bar' id='{{ item.text_id }}'>
+        <div class='text-header'>
+                <span class='file-name-container'>
+                        <input class='file-name-input' placeholder='file name'/>
+                </span>
+                <span class='tool-box'>
+                        <span class='copy'></span>
+                            <button class='file-format-container-new'><span class='actualFileFormatNew'>.txt</span><span class='drop-down-arrow'></span></button>
+                            <div class='file-format-option-container-new' vis='false'>
+                                    <option class='file-format' selected='false'>.txt</option>
+                                    <option class='file-format' selected='false'>.html</option>
+                                    <option class='file-format' selected='false'>.css</option>
+                                    <option class='file-format' selected='false'>.json</option>
+                                    <option class='file-format' selected='false'>.xml</option>
+                                    <option class='file-format' selected='false'>.csv</option>
+                                    <option class='file-format' selected='false'>.md</option>
+                                    <option class='file-format' selected='false'>.pdf</option>
+                            </div>
+                            <span class='share'></span>
+                            <div class='share-list-container' vis='false'>
+                                    <div class='user-search-container'>
+                                    <input class='user-search' placeholder='search...' />
+                                    </div>
+                                    {% for individualData in ud  %}
+                                    <div class='user-data-container' selected='false' id={{individualData['user_id']}}>
+                                            <div class='user-image-container'>
+                                                    <img src='./static/uploads/{{individualData['profile_pic']}}'>
+                                            </div>
+                                            <div class='user-name-container'>
+                                                    <div class='user-name'>{{individualData['name']}}</div>
+                                                    <div class='user-username'>{{individualData['username']}}</div>
+                                            </div>
+                                    </div>
+                                    {% endfor %}
+                                    <div class='share-btn-final'></div>
+                            </div>
+                            <span class='post'></span>
+                </span>
+        </div>
+        <div class='text-content' spellcheck='true' contenteditable='true' id='{{ item.text_id }}'>
+            {% for line in item.new_text.split('\n') %}
+                <p>{{ line }}</p>
+            {% endfor %}
+        </div>
+        <div class='text-file-download-container'>
+            <div>
+                {% if item.file_given == 1 and item.file_given_done == 0 %}
+                <div class='data-entry-status-red' class='data-entry-red'></div>
+                {% elif item.file_given == 1 and item.file_given_done == 1 %}
+                <div class='data-entry-status-green'></div>
+                {% endif %} 
+                <span class='data-entry-text-shower'>Data entry</span>
+                {% if item.file_given == 1 and item.file_given_done == 1 %}
+                <button class='data-entry-resend-btn' id='{{ item.text_id }}'>resend</button>
+                {% endif %}
+            </div>
+            <div class='download-and-delete-btn-wrapper'>
+                <div class='link-format__container'>
+                        <a class='txt-download-link' download>download</a><button class='file-format-container'><span class='actualFileFormat'>.txt</span><span class='drop-down-arrow'></span></button>
+                        <div class='file-format-option-container' vis='false'>
+                            <option class='file-format' selected='false'>.txt</option>
+                            <option class='file-format' selected='false'>.html</option>
+                            <option class='file-format' selected='false'>.css</option>
+                            <option class='file-format' selected='false'>.json</option>
+                            <option class='file-format' selected='false'>.xml</option>
+                            <option class='file-format' selected='false'>.csv</option>
+                            <option class='file-format' selected='false'>.md</option>
+                            <option class='file-format' selected='false'>.pdf</option>
+                        </div>
+                </div>
+                <div class='history-delete-btn' id='{{ item.text_id }}'></div>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+<div class='list-own-post-container'>
+
+</div>
+<div class='profile-update-container-main'>
+    <div class="registration-container">
+        <div class='registration-form-container'>
+            <form action="" class="reg-form" autocomplete='off' spellcheck='false' method='POST'>
+                <!-- *name input field  -->
+                <label for="name" class="label registration-label name-label">Name</label>
+                <input type="text" class="input registration-input name" name="name" value="{{userData[0].name}}">
+                <error></error>
+
+                <label for="gender" class="label registration-label gender-label">gender</label>
+                <div class='gender-container' id='genderContainer'>
+                    <button type='button' class='btn' selected='{{ "true" if userData[0].gender == "male" else "false" }}'>male</button>
+                    <button type='button' class='btn' selected='{{ "true" if userData[0].gender == "female" else "false" }}'>female</button>
+                    <button type='button' class='btn' selected='{{ "true" if userData[0].gender == "others" else "false" }}'>others</button>
+
+                </div>
+                <!-- *address input field  -->
+                <label for="" class="label registration-label address-label">Address</label>
+                <textarea class="input registration-input address" name="address" rows='3'>{{userData[0].address}}</textarea>
+                <error></error>
+                <!-- *phone input field  -->
+                <label for="phone" class="label registration-label phone-label">Phone</label>
+                <input type="text" class="input registration-input phone" name="phone" value="{{userData[0].phone}}">
+                <error></error>
+                <!-- *email input field  -->
+                <label for="email" class="label registration-label email-label">email</label>
+                <input type="text" class="input registration-input email" name="email" value="{{userData[0].email}}">
+                <error></error>
+
+                <span class='realme-label'>username</span>
+                <input type="text" class="input registration-input username" name="username" value="{{userData[0].username}}">
+                <error></error>
+                <!-- -submit button  -->
+                <button type="button" class="btn reg-submit" value="create">update</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div class='password-update-container-main registration-form-container'>
+    <!-- *old password input field  -->
+    <label for="oldPassword" class="label registration-label phone-label">old password</label>
+    <input type="password" class="input registration-input-password old-password" name="oldPassword" >
+    <error></error>
+    <!-- *new password input field  -->
+    <label for="newPassword" class="label registration-label email-label">new password</label>
+    <input type="password" class="input registration-input-password new-password" name="newPassword" >
+    <error></error>
+    <!-- *confirm password input field  -->
+    <label for="confirmPassword" class="label registration-label email-label">confirm password</label>
+    <input type="password" class="input registration-input-password confirm-password" name="confirmPassword" >
+    <error></error>
+    <!-- -submit button  -->
+    <button type="button" class="btn reg-submit-password" value="updatePass">update</button>
+    <div class='password-notifier'>
+        Note : Password must at least contain 6 characters and it should contain at least one uppercase, one lowercase, one special character and one digit.
+    </div>
+</div>
+<div class='feedback-container-main'>
+    <label class='feedback-label '>subject</label>
+    <input type='text' class='feedback-input feedback-sub' />
+    <error></error>
+
+    <label class='feedback-label '>feedback</label>
+    <textarea type='text' class='feedback-input feedback-content' rows='8' placeholder='' ></textarea>
+    <error></error>
+
+    <button class='feedback-send-btn'>send</button>
+</div>
+{% endblock body %}
