@@ -1,4 +1,5 @@
 <h1 align="center"> ScanText ✨</h1>
+<img src="/screenshots/homeDark.png" alt=" " align="center" />
 
 ⚡ Welcome to ScanText, your go-to web application for effortlessly extracting text from images, managing your extracted data, and even sharing and collaborating with others. This application is built using the Python Flask framework, providing a seamless and user-friendly experience.
 
