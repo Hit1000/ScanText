@@ -9,19 +9,36 @@
                 <form action='' name='form'>
                         <input type='file' class='image-input' name='imageInput' accept="image/*" />
                 </form>
-        </div> 
+        </div>
         <div class='drag-and-drop-icon-container'></div>
         <div class='convert-btn-container'>
+                <div class="model-selector-container">
+                        <button class='model-btn'>
+                                <span class='model-name-shower'>Tesseract OCR</span>
+                                <span class='drop-down-arrow'></span>
+                        </button>
+
+                        <div class='model-list-container' vis='false'>
+                                <div><input placeholder='search' type='text' class='model-search-input-field' /></div>
+                                <option class='model-name' val='' selected='true'>Tesseract OCR</option>
+                                <option class='model-name' val='' selected='false'>Custom OCR</option>
+                        </div>
+                </div>
                 <div class='language-selector-container'>
-                        <button class='language-btn'><span class='language-name-shower'>English</span><span class='drop-down-arrow'></span></button>
+                        <button class='language-btn'>
+                                <span class='language-name-shower'>English</span>
+                                <span class='drop-down-arrow'></span>
+                        </button>
                         <div class='language-list-container' vis='false'>
-                                <div><input placeholder='search' type='text' class='language-search-input-field' /></div>
+                                <div><input placeholder='search' type='text' class='language-search-input-field' />
+                                </div>
                                 <option class='language-name' val='afr' selected='false'>Afrikaans</option>
                                 <option class='language-name' val='amh' selected='false'>Amharic</option>
                                 <option class='language-name' val='ara' selected='false'>Arabic</option>
                                 <option class='language-name' val='asm' selected='false'>Assamese</option>
                                 <option class='language-name' val='aze' selected='false'>Azerbaijani</option>
-                                <option class='language-name' val='aze_cyrl' selected='false'>Azerbaijani - Cyrilic</option>
+                                <option class='language-name' val='aze_cyrl' selected='false'>Azerbaijani - Cyrilic
+                                </option>
                                 <option class='language-name' val='bel' selected='false'>Belarusian</option>
                                 <option class='language-name' val='ben' selected='false'>Bengali</option>
                                 <option class='language-name' val='bod' selected='false'>Tibetan</option>
@@ -31,37 +48,47 @@
                                 <option class='language-name' val='cat' selected='false'>Catalan; Valencian</option>
                                 <option class='language-name' val='ceb' selected='false'>Cebuano</option>
                                 <option class='language-name' val='ces' selected='false'>Czech</option>
-                                <option class='language-name' val='chi_sim' selected='false'>Chinese - Simplified</option>
-                                <option class='language-name' val='chi_tra' selected='false'>Chinese - Traditional</option>
+                                <option class='language-name' val='chi_sim' selected='false'>Chinese - Simplified
+                                </option>
+                                <option class='language-name' val='chi_tra' selected='false'>Chinese - Traditional
+                                </option>
                                 <option class='language-name' val='chr' selected='false'>Cherokee</option>
                                 <option class='language-name' val='cos' selected='false'>Corsican</option>
                                 <option class='language-name' val='cym' selected='false'>Welsh</option>
                                 <option class='language-name' val='dan' selected='false'>Danish</option>
-                                <option class='language-name' val='dan_frak' selected='false'>Danish - Fraktur (contrib)</option>
+                                <option class='language-name' val='dan_frak' selected='false'>Danish - Fraktur (contrib)
+                                </option>
                                 <option class='language-name' val='deu' selected='false'>German</option>
-                                <option class='language-name' val='deu_frak' selected='false'>German - Fraktur (contrib)</option>
+                                <option class='language-name' val='deu_frak' selected='false'>German - Fraktur (contrib)
+                                </option>
                                 <option class='language-name' val='dzo' selected='false'>Dzongkha</option>
                                 <option class='language-name' val='ell' selected='false'>Greek, Modern (1453-)</option>
                                 <option class='language-name' val='eng' selected='true'>English</option>
-                                <option class='language-name' val='enm' selected='false'>English, Middle (1100-1500)</option>
+                                <option class='language-name' val='enm' selected='false'>English, Middle (1100-1500)
+                                </option>
                                 <option class='language-name' val='epo' selected='false'>Esperanto</option>
-                                <option class='language-name' val='equ' selected='false'>Math / equation detection module</option>
+                                <option class='language-name' val='equ' selected='false'>Math / equation detection
+                                        module</option>
                                 <option class='language-name' val='est' selected='false'>Estonian</option>
                                 <option class='language-name' val='eus' selected='false'>Basque</option>
                                 <option class='language-name' val='fao' selected='false'>Faroese</option>
                                 <option class='language-name' val='fas' selected='false'>Persian</option>
-                                <option class='language-name' val='fil' selected='false'>Filipino (old - Tagalog)</option>
+                                <option class='language-name' val='fil' selected='false'>Filipino (old - Tagalog)
+                                </option>
                                 <option class='language-name' val='fin' selected='false'>Finnish</option>
                                 <option class='language-name' val='fra' selected='false'>French</option>
                                 <option class='language-name' val='frk' selected='false'>German - Fraktur</option>
-                                <option class='language-name' val='frm' selected='false'>French, Middle (ca.1400-1600)</option>
+                                <option class='language-name' val='frm' selected='false'>French, Middle (ca.1400-1600)
+                                </option>
                                 <option class='language-name' val='fry' selected='false'>Western Frisian</option>
                                 <option class='language-name' val='gla' selected='false'>Scottish Gaelic</option>
                                 <option class='language-name' val='gle' selected='false'>Irish</option>
                                 <option class='language-name' val='glg' selected='false'>Galician</option>
-                                <option class='language-name' val='grc' selected='false'>Greek, Ancient (to 1453)</option>
+                                <option class='language-name' val='grc' selected='false'>Greek, Ancient (to 1453)
+                                </option>
                                 <option class='language-name' val='guj' selected='false'>Gujarati</option>
-                                <option class='language-name' val='hat' selected='false'>Haitian; Haitian Creole</option>
+                                <option class='language-name' val='hat' selected='false'>Haitian; Haitian Creole
+                                </option>
                                 <option class='language-name' val='heb' selected='false'>Hebrew</option>
                                 <option class='language-name' val='hin' selected='false'>Hindi</option>
                                 <option class='language-name' val='hrv' selected='false'>Croatian</option>
@@ -80,10 +107,12 @@
                                 <option class='language-name' val='kaz' selected='false'>Kazakh</option>
                                 <option class='language-name' val='khm' selected='false'>Central Khmer</option>
                                 <option class='language-name' val='kir' selected='false'>Kirghiz; Kyrgyz</option>
-                                <option class='language-name' val='kmr' selected='false'>Kurmanji (Kurdish - Latin Script)</option>
+                                <option class='language-name' val='kmr' selected='false'>Kurmanji (Kurdish - Latin
+                                        Script)</option>
                                 <option class='language-name' val='kor' selected='false'>Korean</option>
                                 <option class='language-name' val='kor_vert' selected='false'>Korean (vertical)</option>
-                                <option class='language-name' val='kur' selected='false'>Kurdish (Arabic Script)</option>
+                                <option class='language-name' val='kur' selected='false'>Kurdish (Arabic Script)
+                                </option>
                                 <option class='language-name' val='lao' selected='false'>Lao</option>
                                 <option class='language-name' val='lat' selected='false'>Latin</option>
                                 <option class='language-name' val='lav' selected='false'>Latvian</option>
@@ -102,7 +131,8 @@
                                 <option class='language-name' val='nor' selected='false'>Norwegian</option>
                                 <option class='language-name' val='oci' selected='false'>Occitan (post 1500)</option>
                                 <option class='language-name' val='ori' selected='false'>Oriya</option>
-                                <option class='language-name' val='osd' selected='false'>Orientation and script detection module</option>
+                                <option class='language-name' val='osd' selected='false'>Orientation and script
+                                        detection module</option>
                                 <option class='language-name' val='pan' selected='false'>Panjabi; Punjabi</option>
                                 <option class='language-name' val='pol' selected='false'>Polish</option>
                                 <option class='language-name' val='por' selected='false'>Portuguese</option>
@@ -116,41 +146,42 @@
 <div class='content-bar'>
         <div class='text-header'>
                 <span class='file-name-container'>
-                        <input class='file-name-input' placeholder='file name'/>
+                        <input class='file-name-input' placeholder='file name' />
                 </span>
                 <span class='tool-box'>
                         <span class='copy'></span>
                         {% if userLoginStatus %}
-                                <button class='file-format-container-new'><span class='actualFileFormatNew'>.txt</span><span class='drop-down-arrow'></span></button>
-                                <div class='file-format-option-container-new' vis='false'>
-                                        <option class='file-format' selected='false'>.txt</option>
-                                        <option class='file-format' selected='false'>.html</option>
-                                        <option class='file-format' selected='false'>.css</option>
-                                        <option class='file-format' selected='false'>.json</option>
-                                        <option class='file-format' selected='false'>.xml</option>
-                                        <option class='file-format' selected='false'>.csv</option>
-                                        <option class='file-format' selected='false'>.md</option>
-                                        <option class='file-format' selected='false'>.pdf</option>
-                                </div>
-                                <span class='share'></span>
-                                <div class='share-list-container' vis='false'>
-                                        <div class='user-search-container'>
+                        <button class='file-format-container-new'><span class='actualFileFormatNew'>.txt</span><span
+                                        class='drop-down-arrow'></span></button>
+                        <div class='file-format-option-container-new' vis='false'>
+                                <option class='file-format' selected='false'>.txt</option>
+                                <option class='file-format' selected='false'>.html</option>
+                                <option class='file-format' selected='false'>.css</option>
+                                <option class='file-format' selected='false'>.json</option>
+                                <option class='file-format' selected='false'>.xml</option>
+                                <option class='file-format' selected='false'>.csv</option>
+                                <option class='file-format' selected='false'>.md</option>
+                                <option class='file-format' selected='false'>.pdf</option>
+                        </div>
+                        <span class='share'></span>
+                        <div class='share-list-container' vis='false'>
+                                <div class='user-search-container'>
                                         <input class='user-search' placeholder='search...' />
-                                        </div>
-                                        {% for individualData in userData  %}
-                                        <div class='user-data-container' selected='false' id={{individualData['user_id']}}>
-                                                <div class='user-image-container'>
-                                                        <img src='./static/uploads/{{individualData['profile_pic']}}'>
-                                                </div>
-                                                <div class='user-name-container'>
-                                                        <div class='user-name'>{{individualData['name']}}</div>
-                                                        <div class='user-username'>{{individualData['username']}}</div>
-                                                </div>
-                                        </div>
-                                        {% endfor %}
-                                        <div class='share-btn-final'></div>
                                 </div>
-                                <span class='post'></span>
+                                {% for individualData in userData %}
+                                <div class='user-data-container' selected='false' id={{individualData['user_id']}}>
+                                        <div class='user-image-container'>
+                                                <img src='./static/uploads/{{individualData[' profile_pic']}}'>
+                                        </div>
+                                        <div class='user-name-container'>
+                                                <div class='user-name'>{{individualData['name']}}</div>
+                                                <div class='user-username'>{{individualData['username']}}</div>
+                                        </div>
+                                </div>
+                                {% endfor %}
+                                <div class='share-btn-final'></div>
+                        </div>
+                        <span class='post'></span>
                         {% endif %}
                 </span>
         </div>
@@ -158,11 +189,13 @@
         <div class='text-file-download-container'>
                 <div class='send-text-to-deo-container'>
                         {% if userLoginStatus %}
-                                <button class='send-text-to-deo-btn'>send to data entry</button>
+                        <button class='send-text-to-deo-btn'>send to data entry</button>
                         {% endif %}
                 </div>
                 <div class='link-format__container'>
-                        <a class='txt-download-link' download>download</a><button class='file-format-container'><span class='actualFileFormat'>.txt</span><span class='drop-down-arrow'></span></button>
+                        <a class='txt-download-link' download>download</a><button class='file-format-container'><span
+                                        class='actualFileFormat'>.txt</span><span
+                                        class='drop-down-arrow'></span></button>
                         <div class='file-format-option-container' vis='false'>
                                 <option class='file-format' selected='false'>.txt</option>
                                 <option class='file-format' selected='false'>.html</option>

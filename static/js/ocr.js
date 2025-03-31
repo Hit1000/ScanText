@@ -81,6 +81,61 @@ function convertImage() {
   });
 }
 
+//model dropdown 
+
+const modelBtn = document.querySelector(".model-btn");
+const modelListContainer = document.querySelector(".model-list-container");
+
+modelBtn.addEventListener("click", () => {
+  const inputField = document.querySelector(".model-search-input-field");
+  const isVisible = modelListContainer.getAttribute("vis") === "true";
+  modelListContainer.setAttribute("vis", isVisible ? "false" : "true");
+  inputField.focus();
+});
+
+// Search logic
+const modelSearchField = document.querySelector(".model-search-input-field");
+modelSearchField.addEventListener("keyup", () => {
+  const modelOptions = document.querySelectorAll(".model-list-container option");
+  modelOptions.forEach(option => {
+    option.style.display = "none";
+  });
+  modelOptions.forEach(option => {
+    if (option.innerText.toLowerCase().includes(modelSearchField.value.toLowerCase())) {
+      option.style.display = "block";
+    }
+  });
+});
+
+// -option selection
+const modelList = document.querySelectorAll(".model-list-container option");
+modelList.forEach((option) => {
+  option.addEventListener("click", (e) => {
+    modelList.forEach((op) => {
+      op.setAttribute("selected", "false");
+    });
+    e.target.setAttribute("selected", "true");
+    document
+      .querySelector(".model-list-container")
+      .setAttribute("vis", "false");
+    const modelBtn = document.querySelector(".model-name-shower");
+    modelBtn.innerText = e.target.innerText;
+  });
+});
+
+// // Option selection
+// const modelOptions = document.querySelectorAll(".model-list-container option");
+// modelOptions.forEach(option => {
+//   option.addEventListener("click", (e) => {
+//     modelOptions.forEach(op => op.setAttribute("selected", "false"));
+//     e.target.setAttribute("selected", "true");
+//     modelListContainer.setAttribute("vis", "false");
+//     document.querySelector(".model-name-shower").innerText = e.target.innerText;
+//   });
+// });
+
+
+
 // -language dropdown start
 
 const langBtn = document.querySelector(".language-btn");
