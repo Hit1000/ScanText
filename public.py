@@ -12,6 +12,7 @@ from datetime import datetime
 import json as json
 from fpdf import FPDF
 import unidecode
+import re
 
 
 
@@ -228,7 +229,7 @@ def login():
             if password == None or password == "" :
                 x[1] = "enter the password"
                 return x
-            password = (hashlib.md5(password.encode())).hexdigest()
+            # password = (hashlib.md5(password.encode())).hexdigest()
             if result[0]['password'] == password :
                 if result[0]['userType'] == 'user' :
                     session['user'] = result[0]['user_id']
@@ -322,7 +323,7 @@ def registration():
            else :
                return x
         if submit == 'true' :
-            password = (hashlib.md5(password.encode())).hexdigest()
+            # password = (hashlib.md5(password.encode())).hexdigest()
             q = "INSERT INTO "+ userType +" SET username='"+ username +"', password='"+ password +"', name='"+name+"', gender='"+gender+"', address='"+address+"', phone='"+phone+"', email='"+email+"'"
             result = database.insert(q)
             return 'success'
@@ -450,6 +451,7 @@ def upload_page():
         if 'file' not in request.files:
             return "no file selected"
         file = request.files.get('file')
+
         # if user does not select file, browser also
         # submit a empty part without filename
         if file.filename == '':
@@ -460,13 +462,38 @@ def upload_page():
         # save the file
         lang = request.form.to_dict()
         
+        # print(lang)
+
         filename = secure_filename(file.filename) # assuming you have imported the `secure_filename` function from the appropriate module
         unique_id = str(uuid.uuid4())
         file_ext = os.path.splitext(filename)[1]
         new_filename = unique_id + file_ext
         file.save(os.path.join(os.getcwd() + UPLOAD_FOLDER, new_filename))
+        # print(text)
         text = ocr_core(file, lang['language'])
-        text = text.replace("'", "\\'")
+        if(lang['model'] == 'tesseract'):
+            text = text.replace("'", "\\'")
+        else:   
+            def clean_and_escape_text(raw_text):
+                # Remove timestamps like "9:55 / 17:48"
+                cleaned = re.sub(r'\d{1,2}:\d{2}\s*/\s*\d{1,2}:\d{2}', '', raw_text)
+
+                # Remove unwanted symbols and fragments (like ¥, and stray capital letters)
+                cleaned = re.sub(r'[^a-zA-Z0-9\s.,&/-]+', '', cleaned)
+                cleaned = re.sub(r'\b[A-Z]{2,}\b', '', cleaned)
+
+                # Split into lines, strip whitespace, and remove empty lines
+                lines = [line.strip() for line in cleaned.splitlines() if line.strip()]
+
+                # Join lines with a separator like newline or bullet
+                formatted = '\n'.join(f"- {line}" for line in lines)
+
+                # Escape single quotes for use in JS/HTML
+                # formatted = formatted.replace("'", "\\'")
+
+                return formatted
+            text = clean_and_escape_text(text)
+
         result = 0
         if(session.get('user')):
             userId = session.get('user')

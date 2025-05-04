@@ -47,6 +47,11 @@ function convertImage() {
     .getAttribute("val");
   formData.append("language", language);
 
+  const model = document
+    .querySelector(".model-list-container option[selected='true']")
+    .getAttribute("val");
+  formData.append("model", model);
+
   $.ajax({
     url: "/ocrCore",
     type: "POST",
