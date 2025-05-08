@@ -5,6 +5,7 @@ import re, hashlib
 import os
 import uuid
 from ocr_core import ocr_core
+from chat import chat, rag
 from flask import request
 import myModule as myModule
 from werkzeug.utils import secure_filename
@@ -13,6 +14,7 @@ import json as json
 from fpdf import FPDF
 import unidecode
 import re
+import globals
 
 
 
@@ -485,14 +487,27 @@ def upload_page():
                 # Split into lines, strip whitespace, and remove empty lines
                 lines = [line.strip() for line in cleaned.splitlines() if line.strip()]
 
+                # Remove lines with non-English letters (after cleaning)
+                lines = [line for line in lines if re.match(r'^[a-zA-Z0-9\s.,&/-]+$', line)]
+
                 # Join lines with a separator like newline or bullet
                 formatted = '\n'.join(f"- {line}" for line in lines)
-
-                # Escape single quotes for use in JS/HTML
-                # formatted = formatted.replace("'", "\\'")
+                formatted = formatted.replace("'", "\\'")
+                formatted = formatted.replace("`", "\\`")
+                formatted = formatted.replace('"', '\\"')
+                formatted = formatted.replace("’", "'")
+                formatted = formatted.replace("“", '"')
+                formatted = formatted.replace("”", '"')
+                formatted = formatted.replace("‘", "'")
+                formatted = formatted.replace("–", "-")
+                formatted = formatted.replace("—", "-")
+                formatted = formatted.replace("•", "-")
+                formatted = formatted.replace("…", "...")
 
                 return formatted
             text = clean_and_escape_text(text)
+            if(lang['language'] != 'eng'):
+                text = ""
 
         result = 0
         if(session.get('user')):
@@ -584,4 +599,32 @@ def pdf():
 
     return response
 
-    
+
+@public.route('/chat', methods=['POST', 'GET'])
+def chatPage():
+    globals.chat_history = "see all messages in the chat history\nit is all with u\nsee all and based on all messages give me the answer of only the last message\n\n"
+    userData = database.select("SELECT * FROM user")
+    if(session.get('user')) : return render_template('chat.html', userData = userData, userLoginStatus = True)
+    return render_template('chat.html', userData = userData, userLoginStatus = False)
+
+@public.route('/chatCore', methods=['POST'])
+def chat_core():
+    try:
+        # Get data from FormData
+        user = request.form.to_dict()
+        user_message = user.get("message")
+
+        if not user_message:
+            return jsonify({"reply": "❌ No message provided."}), 400
+
+        reply = rag(user_message)
+        if(reply != "No relevant information found in the knowledge base."):
+            return jsonify({"reply": reply})
+        
+        reply = chat(user_message)
+        print(reply)
+        return jsonify({"reply": reply})
+
+    except Exception as e:
+        # print("Gemini API Error:", e)
+        return jsonify({"reply": f"❌ Error while getting response from Server: {e}"}), 500

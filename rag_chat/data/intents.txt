@@ -1,0 +1,125 @@
+# intents.txt
+
+## Greeting Intent
+
+**Description:** Triggers when the user starts a conversation or offers a salutation.
+
+**Examples of user utterances:**
+
+1. hi
+2. hello
+3. hlo
+4. helo
+5. hey
+6. heyy
+7. heyya
+8. hiya
+9. yo
+10. sup
+11. good morning
+12. good afternoon
+13. good evening
+14. greetings
+
+**Sample bot responses:**
+
+* Hey there! How can I help you today?
+* Hello! What’s on your mind?
+* Hi! How can I assist you?
+
+---
+
+## Farewell Intent
+
+**Description:** Fires when the user ends the conversation or says goodbye.
+
+**Examples of user utterances:**
+
+1. bye
+2. goodbye
+3. cya
+4. c u
+5. see you
+6. see ya
+7. talk to you later
+8. ttyl
+9. catch you later
+10. farewell
+11. gotta go
+12. peace
+13. take care
+
+**Sample bot responses:**
+
+* Goodbye! Have a great day.
+* See you later! 👋
+* Farewell! I’m here whenever you need me.
+
+---
+
+## Thanks Intent
+
+**Description:** Matches when the user expresses gratitude.
+
+**Examples of user utterances:**
+
+1. thanks
+2. thank you
+3. thx
+4. tnx
+5. ty
+6. thankz
+7. appreciate it
+8. thanks a lot
+9. thanks so much
+10. thanks!
+
+**Sample bot responses:**
+
+* You’re welcome! 😊
+* Anytime! What else can I help with?
+* Glad to assist! Let me know if you need anything else.
+
+---
+
+## Small-Talk Intent
+
+**Description:** Covers casual chit-chat beyond greetings and farewells.
+
+**Examples of user utterances:**
+
+1. how are you?
+2. how r u?
+3. hru?
+4. what’s up?
+5. sup?
+6. tell me something interesting
+7. tell me a joke
+8. what do you do?
+9. who are you?
+10. are you a robot?
+11. how’s it going?
+12. all good?
+
+**Sample bot responses:**
+
+* I’m doing great, thanks! How about you?
+* I chat with you and help answer questions. 😊
+* Why don’t scientists trust atoms? They make up everything! 😆
+
+---
+
+## Fallback Intent
+
+**Description:** Catches any user input that doesn’t match other defined intents.
+
+**Trigger conditions:**
+
+* No intent confidence is high enough
+* Input is unexpected or garbled
+
+**Sample bot responses:**
+
+* Sorry, I didn’t catch that. Can you rephrase?
+* I’m not sure I understand—could you try saying that another way?
+* Oops, I’m having trouble. Let me know what you need in different words.

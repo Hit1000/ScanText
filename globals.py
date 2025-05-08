@@ -1,0 +1,1 @@
+chat_history = "see all messages in the chat history\nit is all with u\nsee all and based on all messages give me the answer of only the last message\n\n"

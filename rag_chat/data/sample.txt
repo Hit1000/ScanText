@@ -1,0 +1,17 @@
+This is a sample document for the RAG tutorial.
+
+Retrieval-Augmented Generation (RAG) is a technique that enhances Large Language Models by incorporating external knowledge sources.
+
+Key benefits of RAG:
+1. Improved accuracy with factual information
+2. Reduced hallucinations
+3. Access to domain-specific knowledge
+4. Better reasoning with up-to-date information
+
+RAG works by:
+1. Indexing documents into a vector database
+2. Retrieving relevant context when a query is received
+3. Combining the retrieved information with the language model's capabilities
+4. Generating accurate, contextual responses
+
+This sample document demonstrates how RAG can retrieve this information when asked questions about RAG concepts. 

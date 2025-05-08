@@ -20,22 +20,25 @@
     <nav>
       <div class="nav-wrapper">
         <a class="no-text-decoration" href="/" id="nav-item" nav='index'>
-          <span>home</span>
+          <span>Home</span>
         </a>
         <a class="no-text-decoration" href="/ocr" id="nav-item" nav='ocr'>
           <span>OCR</span>
         </a>
+        <a class="no-text-decoration" href="/chat" id="nav-item" nav='chat'>
+          <span>Chat</span>
+        </a>
         {% if session['user'] %}
           <a class="no-text-decoration" href="/message" id="nav-item" nav='message'>
-            <span>message</span>
+            <span>Message</span>
           </a>
         {% endif %}
         <a class="no-text-decoration" href="/post" id="nav-item" nav='post'>
-          <span>post</span>
+          <span>Post</span>
         </a>
         {% if session['user'] %}
           <a class="no-text-decoration" href="/profile" id="nav-item" nav='profile'>
-            <span>profile</span>
+            <span>Profile</span>
           </a>
         {% endif %}
         {% if session['user'] %}

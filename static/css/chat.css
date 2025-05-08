@@ -1,0 +1,123 @@
+@import url('main.css');
+
+.main-body {
+    display: flex;
+    justify-content: center;
+    /* Centers horizontally */
+    align-items: start;
+    /* Align to top (you can change to center if needed) */
+    height: 78vh;
+    padding-inline: 5vw;
+    position: relative;
+    color: black;
+}
+
+.chat-container {
+    width: 100%;
+    max-width: 1000px;
+    height: 80vh;
+    background: var(--bg-card-2);
+    border-radius: 12px;
+    box-shadow: 0 4px 20px var(--shadow);
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    padding: 1rem;
+    background-color: var(--color);
+    color: var(--onColor);
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.chat-box {
+    flex: 1;
+    padding: 1rem;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.chat-message {
+    max-width: 75%;
+    padding: 0.8rem 1rem;
+    border-radius: 12px;
+    line-height: 1.4;
+}
+
+.user-message {
+    align-self: flex-end;
+    background-color: #e0e7ff;
+}
+
+.bot-message {
+    align-self: flex-start;
+    background-color: #f3f4f6;
+    border: 1px solid #e5e7eb;
+}
+
+.chat-input {
+    display: flex;
+    border-top: 1px solid #878787;
+}
+
+.chat-input input {
+    flex: 1;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    border-end-start-radius: 12px;
+    background-color: var(--bg-input);
+    color: var(--text-color);
+}
+
+.chat-input button {
+    padding: 1rem;
+    background-color: var(--color);
+    color: var(--onColor);
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    border-end-end-radius: 12px;
+}
+
+
+.dot-loader {
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    background: var(--color);
+    box-shadow: 1.2em 0 0 var(--color), 2.4em 0 0 var(--color);
+    animation: dots 1.2s infinite linear;
+  }
+  
+  @keyframes dots {
+    0% {
+      box-shadow: 1.2em 0 0 var(--color), 2.4em 0 0 var(--color);
+    }
+    16% {
+      box-shadow: 0 0 0 var(--color), 2.4em 0 0 var(--color);
+    }
+    32% {
+      box-shadow: 0 0 0 var(--color), 1.2em 0 0 var(--color);
+    }
+    48% {
+      box-shadow: 0 0 0 var(--color), 0 0 0 var(--color);
+    }
+    64% {
+      box-shadow: 1.2em 0 0 var(--color), 0 0 0 var(--color);
+    }
+    80% {
+      box-shadow: 1.2em 0 0 var(--color), 2.4em 0 0 var(--color);
+    }
+    100% {
+      box-shadow: 1.2em 0 0 var(--color), 2.4em 0 0 var(--color);
+    }
+  }
+  

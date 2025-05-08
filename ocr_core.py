@@ -16,19 +16,16 @@ def custom_ocr_core(file):
 
     ocr_model = load_model("models/best_model.h5", custom_objects={'LSTM': LSTM})
 
-    # Adjust according to your model's input shape
     IMG_WIDTH = 128
     IMG_HEIGHT = 32
 
     img = preprocess_image(file_path)
     preds = ocr_model.predict(img)
 
-    # CASE 1: If model directly returns string
     if isinstance(preds, str):
         return preds
 
-    # CASE 2: If model returns char-level logits
-    decoded = ''.join([chr(np.argmax(p)) for p in preds[0]])  # Example only
+    decoded = ''.join([chr(np.argmax(p)) for p in preds[0]])
     return decoded.strip()
 
 def ocr_core(file, lang):
