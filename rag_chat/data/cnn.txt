@@ -1,0 +1,22 @@
+## Convolutional Neural Networks (CNN) Overview
+
+Convolutional Neural Networks (CNNs) specialize in grid-structured data like images.
+
+Core layers:
+
+1. Convolutional layers (feature extractors)
+2. Pooling layers (downsampling)
+3. Fully connected layers (classification)
+
+How they work:
+
+1. Apply multiple learnable filters to input
+2. Pool/stride to reduce spatial dimensions
+3. Flatten & pass through dense layers for output
+
+Use cases:
+
+* Image classification (cats vs. dogs)
+* Object detection (YOLO, Faster R-CNN)
+* Image segmentation (U-Net)
+* Video analysis

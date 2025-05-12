@@ -1,0 +1,24 @@
+## Machine Learning (ML) Overview
+
+Machine Learning (ML) lets systems learn patterns from data without explicit programming.
+
+Types of ML:
+
+1. Supervised Learning (labeled data)
+2. Unsupervised Learning (clustering, dimensionality reduction)
+3. Reinforcement Learning (trial-and-error rewards)
+
+Typical workflow:
+
+1. Data collection & cleaning
+2. Feature engineering
+3. Model selection & training
+4. Evaluation & deployment
+
+Common algorithms:
+
+* Linear & Logistic Regression
+* Decision Trees & Random Forests
+* K-Means Clustering
+* Q-Learning
+

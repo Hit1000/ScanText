@@ -1,7 +1,11 @@
 function sendMessage() {
   const input = document.getElementById("user-input");
   const message = input.value.trim();
-  if (message === "") return;
+  if (message === ""){
+    popup("Please Enter Something", "blue", "3s");
+    return;
+  } 
+    
 
   addMessage("user", message);
   input.value = "";
@@ -13,7 +17,7 @@ function sendMessage() {
   // Simulate bot thinking
   const formData = new FormData();
   formData.append("message", message);
-
+  popup("request send successfully", "green", "3s");
   $.ajax({
     url: "/chatCore",
     type: "POST",
@@ -27,6 +31,7 @@ function sendMessage() {
       addMessage("bot", reply);
     },
     error: function (xhr, status, error) {
+      popup("request send failed", "red", "3s");
       console.error("Error:", error, status, xhr);
       removeMessage(loadingId);
       addMessage("bot", xhr.responseJSON.reply||"⚠️ Error reaching chat server.");

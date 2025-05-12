@@ -20,6 +20,7 @@
     padding:0 4rem 4rem 2rem;
 }
 customHead{
+    margin: 20px;
     font-size: 4rem;
     font-weight: 700;
     background-color: var(--color);
@@ -39,8 +40,26 @@ customHead{
     top: calc(var(--size) * var(--value) / -2.4);
     right: calc(var(--size) * var(--value) / -2.2);
     background-color: var(--secondary);
+    border: 1px solid var(--text-color);
     border-radius: 1rem;
     background-image: url('/static/images/images.png');
+    background-size: calc(var(--size) * 1.8);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.to-chat-page-link-container{
+    display: block;
+    position: absolute;
+    z-index: 10;
+    --value: 3.5;
+    width: calc(var(--size) * var(--value));
+    height: calc(var(--size) * var(--value));
+    top: calc(var(--size) * var(--value) / -2.4);
+    right: calc(var(--size) * var(--value) / -2.2);
+    background-color: var(--secondary);
+    border: 1px solid var(--text-color);
+    border-radius: 1rem;
+    background-image: url('/static/images/blog-text.png');
     background-size: calc(var(--size) * 1.8);
     background-position: center;
     background-repeat: no-repeat;

@@ -1,0 +1,22 @@
+## Retrieval-Augmented Generation (RAG) Overview
+
+Retrieval-Augmented Generation (RAG) augments LLMs with external knowledge retrieval.
+
+Benefits:
+
+1. Cuts down hallucinations
+2. Injects up-to-date & domain-specific facts
+3. Boosts factual accuracy & coverage
+
+Process:
+
+1. Index documents into a vector store
+2. Retrieve top-k relevant chunks for a query
+3. Concatenate context + prompt to LLM
+4. Generate answer grounded in retrieved info
+
+Use cases:
+
+* Knowledge-base chatbots
+* Document Q\&A systems
+* Technical support assistants

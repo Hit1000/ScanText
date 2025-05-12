@@ -1,0 +1,24 @@
+## Artificial Intelligence (AI) Overview
+
+Artificial Intelligence (AI) enables machines to mimic human cognitive functions.
+
+Core areas:
+
+1. Machine Learning
+2. Natural Language Processing (NLP)
+3. Computer Vision
+4. Robotics & Control Systems
+
+Why AI matters:
+
+1. Automates repetitive tasks
+2. Enhances decision-making with data
+3. Delivers personalized experiences
+4. Drives innovation across industries
+
+Examples:
+
+* Virtual assistants (Siri, Alexa)
+* Recommendation engines (Netflix, Amazon)
+* Autonomous vehicles
+* Fraud detection systems

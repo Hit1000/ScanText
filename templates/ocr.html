@@ -22,6 +22,7 @@
                                 <div><input placeholder='search' type='text' class='model-search-input-field' /></div>
                                 <option class='model-name' val='tesseract' selected='true'>Tesseract OCR</option>
                                 <option class='model-name' val='custom' selected='false'>Custom OCR</option>
+                                <option class='model-name' val='handwritting' selected='false'>Handwritting OCR</option>
                         </div>
                 </div>
                 <div class='language-selector-container'>
@@ -190,6 +191,9 @@
                 <div class='send-text-to-deo-container'>
                         {% if userLoginStatus %}
                         <button class='send-text-to-deo-btn'>send to data entry</button>
+                        {% endif %}
+                        {% if userLoginStatus %}
+                        <button class='send-text-to-chat-btn'>send to chat bot</button>
                         {% endif %}
                 </div>
                 <div class='link-format__container'>

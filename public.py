@@ -475,6 +475,8 @@ def upload_page():
         text = ocr_core(file, lang['language'])
         if(lang['model'] == 'tesseract'):
             text = text.replace("'", "\\'")
+        elif(lang['model'] == 'handwritting'):
+            text = "yo"
         else:   
             def clean_and_escape_text(raw_text):
                 # Remove timestamps like "9:55 / 17:48"
@@ -602,12 +604,19 @@ def pdf():
 
 @public.route('/chat', methods=['POST', 'GET'])
 def chatPage():
-    globals.chat_history = "see all messages in the chat history\nit is all with u\nsee all and based on all messages give me the answer of only the last message\n\n"
-    userData = database.select("SELECT * FROM user")
-    if(session.get('user')) : return render_template('chat.html', userData = userData, userLoginStatus = True)
-    return render_template('chat.html', userData = userData, userLoginStatus = False)
+    try:
+        userData = database.select("SELECT * FROM user")
+        message = request.args.get('message', '')  # Get the message from the query parameter
+        print(f"Received message: {message}")  # Debugging: Log the message
+        if session.get('user'):
+            return render_template('chat.html', userData=userData, userLoginStatus=True, initialMessage=message)
+        return render_template('chat.html', userData=userData, userLoginStatus=False, initialMessage=message)
+    except Exception as e:
+        print(f"Error in /chat route: {e}")  # Debugging: Log the error
+        return "Something went wrong", 500
 
-@public.route('/chatCore', methods=['POST'])
+
+@public.route('/chatCore', methods=['POST', 'GET'])
 def chat_core():
     try:
         # Get data from FormData
@@ -622,7 +631,7 @@ def chat_core():
             return jsonify({"reply": reply})
         
         reply = chat(user_message)
-        print(reply)
+        # print(reply)
         return jsonify({"reply": reply})
 
     except Exception as e:

@@ -1,0 +1,22 @@
+## Recurrent Neural Networks (RNN) Overview
+
+Recurrent Neural Networks (RNNs) are built for sequential data.
+
+Variants:
+
+1. Vanilla RNN
+2. Long Short-Term Memory (LSTM)
+3. Gated Recurrent Unit (GRU)
+
+How they work:
+
+1. Process inputs one timestep at a time
+2. Maintain hidden state carrying past info
+3. Train via Backpropagation Through Time (BPTT)
+
+Applications:
+
+* Language modeling & text generation
+* Machine translation
+* Time series forecasting
+* Speech recognition

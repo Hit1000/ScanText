@@ -520,3 +520,11 @@ const td = document.querySelector('.text-content')
       })
     })
 
+$(".send-text-to-chat-btn").click(() => {
+  const text = getTextFromEditor(); // Get the text from the editor
+  // Redirect to the chat page with the text as a query parameter
+  const encodedText = encodeURIComponent(text);
+  // console.log(encodedText)
+  location.href = `/chat?message=${encodedText}`;
+  popup("request send successfully", "green", "3s");
+});

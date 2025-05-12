@@ -538,3 +538,9 @@ img{
     border-radius: .9rem;
     padding: .4rem 1rem;
 }
+.send-text-to-chat-btn{
+    background-color: var(--color);
+    color: var(--onColor);
+    border-radius: .9rem;
+    padding: .4rem 1rem;
+}

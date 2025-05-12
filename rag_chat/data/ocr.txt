@@ -1,0 +1,22 @@
+## Optical Character Recognition (OCR) Overview
+
+Optical Character Recognition (OCR) converts images of text into machine-readable text.
+
+Pipeline:
+
+1. Preprocessing (binarization, denoising)
+2. Text detection (locate text regions)
+3. Character segmentation (split into glyphs)
+4. Character recognition (classify each glyph)
+
+Techniques:
+
+* Traditional engines (Tesseract)
+* DL-based (CRNN, Transformer OCR)
+
+Applications:
+
+* Document digitization
+* Invoice & receipt processing
+* License plate recognition
+* Handwriting recognition

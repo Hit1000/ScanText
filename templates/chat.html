@@ -1,14 +1,18 @@
 {% extends 'components/layout.html' %} {% block links %}
 <link rel="stylesheet" href="../static/css/chat.css" />
-<script src='../static/js/chat.js' defer></script>
+<script src="../static/js/chat.js" defer></script>
 {% endblock links %} {% block body %}
 
 <div class="chat-container">
-    <div class="chat-header">ChatBot</div>
-    <div class="chat-box" id="chat-box"></div>
-    <div class="chat-input">
-      <input type="text" id="user-input" placeholder="Type your message..." />
-      <button onclick="sendMessage()">Send</button>
-    </div>
+  <div class="chat-header">ChatBot</div>
+  <div class="chat-box" id="chat-box">
+    <!-- {% if initialMessage %}
+    <div class="chat-message user-message">{{ initialMessage }}</div>
+    {% endif %} -->
   </div>
+  <div class="chat-input">
+    <input type="text" id="user-input" placeholder="Type your message..." value="{{ initialMessage }}"/>
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
 {% endblock body %}
