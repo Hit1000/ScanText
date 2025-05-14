@@ -5,7 +5,7 @@ import re, hashlib
 import os
 import uuid
 from ocr_core import ocr_core
-from chat import chat, rag
+from chat import chat, rag, image_text
 from flask import request
 import myModule as myModule
 from werkzeug.utils import secure_filename
@@ -476,7 +476,8 @@ def upload_page():
         if(lang['model'] == 'tesseract'):
             text = text.replace("'", "\\'")
         elif(lang['model'] == 'handwritting'):
-            text = "yo"
+            image_path = os.path.join(os.getcwd() + UPLOAD_FOLDER, new_filename)
+            text = image_text(image_path)
         else:   
             def clean_and_escape_text(raw_text):
                 # Remove timestamps like "9:55 / 17:48"
@@ -626,9 +627,9 @@ def chat_core():
         if not user_message:
             return jsonify({"reply": "❌ No message provided."}), 400
 
-        reply = rag(user_message)
-        if(reply != "No relevant information found in the knowledge base."):
-            return jsonify({"reply": reply})
+        # reply = rag(user_message)
+        # if(reply != "No relevant information found in the knowledge base."):
+        #     return jsonify({"reply": reply})
         
         reply = chat(user_message)
         # print(reply)
