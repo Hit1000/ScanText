@@ -475,7 +475,7 @@ def upload_page():
         text = ocr_core(file, lang['language'])
         if(lang['model'] == 'tesseract'):
             text = text.replace("'", "\\'")
-        elif(lang['model'] == 'handwritting'):
+        elif(lang['model'] == 'handwritting' and lang['language'] == 'eng'):
             image_path = os.path.join(os.getcwd() + UPLOAD_FOLDER, new_filename)
             text = image_text(image_path)
         else:   
